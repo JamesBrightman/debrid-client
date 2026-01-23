@@ -34,7 +34,6 @@ export const createClient = () => {
   return instance;
 };
 
-// Singleton client instance
 export const client = createClient();
 
 /**
@@ -42,4 +41,11 @@ export const client = createClient();
  */
 export const getSettings = async () => {
   return (await client.get("/settings")).data;
+};
+
+/**
+ * Gets user from Real-Debrid
+ */
+export const getUser = async () => {
+  return (await client.get("/user")).data;
 };
