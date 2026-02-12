@@ -1,12 +1,12 @@
-type UserAccountStatusProps = {
+type UserStatusBadgeProps = {
   isPremium: boolean;
 };
 
-export const UserAccountStatus: React.FC<UserAccountStatusProps> = ({
+export const UserStatusBadge: React.FC<UserStatusBadgeProps> = ({
   isPremium,
 }) => {
   const badgeBaseClass =
-    "inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold";
+    "inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-semibold";
 
   const badgeToneClass = isPremium
     ? "bg-amber-100 text-amber-800"

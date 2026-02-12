@@ -1,12 +1,14 @@
 "use client";
 
 import { useDebridUser } from "@/hooks/useDebridUser";
-import { UserAccountStatus } from "@/components/UserAccountStatus";
+import { UserStatusBadge } from "@/components/UserStatusBadge";
 
 type DebridUserSummary = {
   username?: string;
   email?: string;
   points?: number;
+  premium?: number;
+  expiration?: string;
   type?: string;
   avatar?: string;
 };
@@ -20,22 +22,51 @@ export const UserSummary: React.FC = () => {
   }
 
   const username = user.username?.trim();
+
   const isPremium = user.type?.toLowerCase() === "premium";
+
   const hasAvatar = typeof user.avatar === "string" && user.avatar.length > 0;
+
+  const premiumDaysLeft =
+    typeof user.premium === "number"
+      ? Math.max(0, Math.ceil(user.premium / 86400))
+      : null;
+
+  const expirationDate =
+    typeof user.expiration === "string" && user.expiration.length > 0
+      ? (() => {
+          const date = new Date(user.expiration);
+          return Number.isNaN(date.getTime())
+            ? null
+            : date.toISOString().slice(0, 10);
+        })()
+      : null;
 
   return (
     <section className="card-shell relative overflow-hidden p-6 sm:p-8">
       <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-[color:var(--accent-coral-soft)] blur-xl" />
       <div className="relative flex items-start justify-between gap-4">
         <div className="space-y-3">
+          <UserStatusBadge isPremium={isPremium} />
           <h2 className="text-xl font-semibold text-[color:var(--foreground)]">
             Welcome{username ? `, ${username}` : ""}
           </h2>
           <div className="space-y-1 text-sm text-[color:var(--muted)]">
-            <p>Email: {user.email ?? "-"}</p>
+            <p>{user.email ?? "-"}</p>
             <p>Points: {user.points ?? "-"}</p>
+            <div className="flex items-center gap-3">
+              <span>{expirationDate ?? "-"}</span>
+              <span>
+                (
+                {premiumDaysLeft === null
+                  ? "-"
+                  : `${premiumDaysLeft} ${
+                      premiumDaysLeft === 1 ? "Day" : "Days"
+                    } left`}
+                )
+              </span>
+            </div>
           </div>
-          <UserAccountStatus isPremium />
         </div>
 
         <div className="h-14 w-14 shrink-0 rounded-full border-2 border-white bg-[color:var(--surface-soft)] shadow-sm">

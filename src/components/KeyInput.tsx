@@ -35,7 +35,7 @@ export const KeyInput: React.FC = () => {
           name="debrid_api_token"
           type={isVisible ? "text" : "password"}
           autoComplete={isVisible ? "off" : "new-password"}
-          className="w-full rounded-xl border border-(--border) bg-(--surface-soft) px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none transition focus:border-[color:var(--accent-coral)] focus:ring-2 focus:ring-[color:var(--accent-coral)]/25"
+          className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none transition focus:border-[color:var(--accent-coral)] focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
           value={localKeyVal}
           onChange={(e) => setLocalKeyVal(e.target.value)}
           placeholder="Enter API token"
@@ -54,7 +54,7 @@ export const KeyInput: React.FC = () => {
               height={20}
               aria-hidden="true"
               className={`absolute inset-0 transition-all duration-200 ${
-                isVisible ? "scale-40 opacity-0" : "scale-100 opacity-100"
+                isVisible ? "scale-50 opacity-0" : "scale-100 opacity-100"
               }`}
             />
             <Image
@@ -64,7 +64,7 @@ export const KeyInput: React.FC = () => {
               height={20}
               aria-hidden="true"
               className={`absolute inset-0 transition-all duration-200 ${
-                isVisible ? "scale-100 opacity-100" : "scale-40 opacity-0"
+                isVisible ? "scale-100 opacity-100" : "scale-50 opacity-0"
               }`}
             />
           </span>
