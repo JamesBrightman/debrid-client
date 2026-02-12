@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f1f0f4;
+  --surface: #faf9fc;
+  --surface-soft: #fffdfd;
+  --foreground: #2d2b32;
+  --muted: #8e8a96;
+  --border: #e9e3ee;
+  --accent-coral: #ff8c71;
+  --accent-coral-soft: #fff0eb;
+  --accent-indigo-start: #5a5af8;
+  --accent-indigo-end: #4a4df4;
 }
 
 @theme inline {
@@ -12,15 +20,36 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background:
+    radial-gradient(circle at 0% 0%, #f9ebea 0%, #f1f0f4 45%), var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::selection {
+  background: rgba(255, 140, 113, 0.3);
+}
+
+.card-shell {
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--surface);
+  box-shadow:
+    0 14px 24px -22px rgba(56, 43, 76, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.cta-gradient {
+  background-image: linear-gradient(
+    120deg,
+    var(--accent-indigo-start),
+    var(--accent-indigo-end)
+  );
+  box-shadow: 0 10px 18px -12px rgba(74, 77, 244, 0.75);
+}
+
+.pill-coral {
+  background-image: linear-gradient(120deg, #ffb296, var(--accent-coral));
+  color: #ffffff;
 }
