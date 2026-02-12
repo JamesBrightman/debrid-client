@@ -35,23 +35,29 @@ export const KeyInput: React.FC = () => {
         className="sr-only"
         tabIndex={-1}
       />
-      <label
-        htmlFor="debrid-key"
-        className="block text-sm font-semibold text-foreground"
-      >
-        Real-Debrid API token
-      </label>
       <div className="flex gap-2">
-        <input
-          id="debrid-key"
-          name="debrid_api_token"
-          type={isVisible ? "text" : "password"}
-          autoComplete={isVisible ? "off" : "new-password"}
-          className="w-full rounded-xl border border-(--border) bg-(--surface-soft) px-3 py-2.5 text-sm text-foreground outline-none transition focus:border-(--accent-coral) focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
-          value={localKeyVal}
-          onChange={(e) => setLocalKeyVal(e.target.value)}
-          placeholder="Enter API token"
-        />
+        <div className="relative w-full">
+          <input
+            id="debrid-key"
+            name="debrid_api_token"
+            type={isVisible ? "text" : "password"}
+            autoComplete={isVisible ? "off" : "new-password"}
+            className="peer w-full rounded-xl border border-(--border) bg-(--surface-soft) px-3 pb-2.5 pt-5 text-sm text-foreground outline-none transition focus:border-(--accent-coral) focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
+            value={localKeyVal}
+            onChange={(e) => setLocalKeyVal(e.target.value)}
+            placeholder=" "
+          />
+          <label
+            htmlFor="debrid-key"
+            className={`pointer-events-none absolute left-3 text-[color:var(--muted)] transition-all duration-150 ${
+              localKeyVal.trim()
+                ? "top-1.5 text-[11px]"
+                : "top-1/2 -translate-y-1/2 text-sm peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px]"
+            }`}
+          >
+            Real-Debrid API token
+          </label>
+        </div>
         <button
           type="button"
           onClick={() => setIsVisible((prev) => !prev)}
@@ -85,7 +91,7 @@ export const KeyInput: React.FC = () => {
       <button
         type="submit"
         disabled={!hasChanged}
-        className="cta-gradient rounded-xl px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
+        className="cta-gradient rounded-xl px-4 py-2.5 w-full sm:w-auto text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
       >
         Save token
       </button>
