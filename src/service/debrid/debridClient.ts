@@ -1,4 +1,16 @@
 import axios from "axios";
+import {
+  serverTimeResponseSchema,
+  type ServerTimeResponse,
+} from "@/types/response/serverTimeResponse";
+import {
+  userResponseSchema,
+  type UserResponse,
+} from "@/types/response/userResponse";
+import {
+  settingsResponseSchema,
+  type SettingsResponse,
+} from "@/types/response/settingsResponse";
 
 const debridClient = axios.create({
   baseURL: "https://api.real-debrid.com/rest/1.0",
@@ -17,6 +29,20 @@ const debridGet = async <T>(path: string, token: string): Promise<T> => {
   return data;
 };
 
-export const getSettings = (token: string) => debridGet("/settings", token);
+export const getSettings = async (token: string): Promise<SettingsResponse> => {
+  const data = await debridGet<unknown>("/settings", token);
 
-export const getUser = (token: string) => debridGet("/user", token);
+  return settingsResponseSchema.parse(data);
+};
+
+export const getUser = async (token: string): Promise<UserResponse> => {
+  const data = await debridGet<unknown>("/user", token);
+
+  return userResponseSchema.parse(data);
+};
+
+export const getServerTime = async (): Promise<ServerTimeResponse> => {
+  const { data } = await debridClient.get<unknown>("/time/iso");
+
+  return serverTimeResponseSchema.parse(data);
+};

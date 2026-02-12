@@ -37,7 +37,7 @@ export const KeyInput: React.FC = () => {
       />
       <label
         htmlFor="debrid-key"
-        className="block text-sm font-semibold text-[color:var(--foreground)]"
+        className="block text-sm font-semibold text-foreground"
       >
         Real-Debrid API token
       </label>
@@ -47,7 +47,7 @@ export const KeyInput: React.FC = () => {
           name="debrid_api_token"
           type={isVisible ? "text" : "password"}
           autoComplete={isVisible ? "off" : "new-password"}
-          className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none transition focus:border-[color:var(--accent-coral)] focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
+          className="w-full rounded-xl border border-(--border) bg-(--surface-soft) px-3 py-2.5 text-sm text-foreground outline-none transition focus:border-(--accent-coral) focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
           value={localKeyVal}
           onChange={(e) => setLocalKeyVal(e.target.value)}
           placeholder="Enter API token"
@@ -55,7 +55,7 @@ export const KeyInput: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsVisible((prev) => !prev)}
-          className="flex items-center justify-center rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] px-3 py-2 transition hover:bg-[color:var(--accent-coral-soft)]"
+          className="flex items-center justify-center rounded-xl border border-(--border) bg-(--surface-soft) px-3 py-2 transition hover:bg-(--accent-coral-soft)"
           aria-label={isVisible ? "Hide API token" : "Show API token"}
         >
           <span className="relative block w-5 h-5">

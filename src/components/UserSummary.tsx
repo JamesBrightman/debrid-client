@@ -2,20 +2,11 @@
 
 import { useDebridUser } from "@/hooks/useDebridUser";
 import { UserStatusBadge } from "@/components/UserStatusBadge";
-
-type DebridUserSummary = {
-  username?: string;
-  email?: string;
-  points?: number;
-  premium?: number;
-  expiration?: string;
-  type?: string;
-  avatar?: string;
-};
+import { UserType, type UserResponse } from "@/types/response/userResponse";
 
 export const UserSummary: React.FC = () => {
   const { data } = useDebridUser();
-  const user = data as DebridUserSummary | undefined;
+  const user = data as UserResponse | undefined;
 
   if (!user) {
     return null;
@@ -23,7 +14,7 @@ export const UserSummary: React.FC = () => {
 
   const username = user.username?.trim();
 
-  const isPremium = user.type?.toLowerCase() === "premium";
+  const isPremium = user.type === UserType.premium;
 
   const hasAvatar = typeof user.avatar === "string" && user.avatar.length > 0;
 
@@ -36,6 +27,7 @@ export const UserSummary: React.FC = () => {
     typeof user.expiration === "string" && user.expiration.length > 0
       ? (() => {
           const date = new Date(user.expiration);
+
           return Number.isNaN(date.getTime())
             ? null
             : date.toISOString().slice(0, 10);

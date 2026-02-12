@@ -10,8 +10,12 @@ export const DebridUser: React.FC = () => {
   if (!hasKey) {
     return (
       <section className="w-full rounded-xl border border-dashed border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">User</h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">Add a token to load user info.</p>
+        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+          User
+        </h2>
+        <p className="mt-2 text-sm text-[color:var(--muted)]">
+          Add a token to load user info.
+        </p>
       </section>
     );
   }
@@ -19,8 +23,12 @@ export const DebridUser: React.FC = () => {
   if (isLoading) {
     return (
       <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">User</h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">Loading user...</p>
+        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+          User
+        </h2>
+        <p className="mt-2 text-sm text-[color:var(--muted)]">
+          Loading user...
+        </p>
       </section>
     );
   }
@@ -36,7 +44,9 @@ export const DebridUser: React.FC = () => {
 
   return (
     <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-      <h2 className="text-base font-semibold text-[color:var(--foreground)]">User</h2>
+      <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+        User
+      </h2>
       <pre className="mt-3 overflow-x-auto rounded-xl bg-zinc-950 p-3 text-xs text-zinc-100">
         {JSON.stringify(data, null, 2)}
       </pre>
