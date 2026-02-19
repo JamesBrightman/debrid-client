@@ -3,13 +3,20 @@
 import { useDebridApiKey } from "@/hooks/useDebridApiKey";
 import { useDebridTrafficDetails } from "@/hooks/useDebridTrafficDetails";
 import type { TrafficDetailsResponse } from "@/types/response/trafficDetailsResponse";
-import { formatBytes } from "@/utils/formatBytes";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 type TimelineItem = {
   dateKey: string;
   dateLabel: string;
   bytes: number;
-  hostCount: number;
 };
 
 const toLocalDateString = (date: Date): string => {
@@ -19,6 +26,18 @@ const toLocalDateString = (date: Date): string => {
 
   return `${year}-${month}-${day}`;
 };
+
+const bytesToGbValue = (bytes: number): string => {
+  const gb = bytes / 1024 ** 3;
+
+  if (gb === 0) {
+    return "0";
+  }
+
+  return Number(gb.toFixed(2)).toString();
+};
+
+const bytesToGbLabel = (bytes: number): string => `${bytesToGbValue(bytes)} Gb`;
 
 const getTimeline = (
   data: TrafficDetailsResponse | undefined,
@@ -39,7 +58,6 @@ const getTimeline = (
         day: "numeric",
       }),
       bytes: dayTraffic?.bytes ?? 0,
-      hostCount: Object.keys(dayTraffic?.host ?? {}).length,
     };
   });
 };
@@ -86,36 +104,66 @@ export const DebridTrafficDetails: React.FC = () => {
   }
 
   const timeline = getTimeline(data);
-  const maxBytes = Math.max(...timeline.map((item) => item.bytes), 1);
 
   return (
     <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
       <h2 className="text-base font-semibold text-[color:var(--foreground)]">
         Taffic - last 7 days
       </h2>
-      <ul className="mt-3 space-y-3">
-        {timeline.map((item) => {
-          const percentage = (item.bytes / maxBytes) * 100;
-          const width = item.bytes > 0 ? Math.max(percentage, 2) : 0;
-
-          return (
-            <li key={item.dateKey}>
-              <div className="flex items-center justify-between gap-3 text-xs text-[color:var(--muted)]">
-                <span>{item.dateLabel}</span>
-                <span>
-                  {formatBytes(item.bytes)} ({item.hostCount} hosts)
-                </span>
-              </div>
-              <div className="mt-1 h-2 rounded-full bg-zinc-200">
-                <div
-                  className="h-full rounded-full bg-[#a5402a]"
-                  style={{ width: `${width}%` }}
-                />
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="mt-3 h-64 w-full">
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart
+            data={timeline}
+            margin={{ top: 8, right: 12, left: 8, bottom: 4 }}
+          >
+            <defs>
+              <linearGradient id="trafficAreaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#a5402a" stopOpacity={0.35} />
+                <stop offset="95%" stopColor="#a5402a" stopOpacity={0.05} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="3 3" stroke="#e9e3ee" />
+            <XAxis
+              dataKey="dateLabel"
+              tick={{ fill: "#8e8a96", fontSize: 12 }}
+              axisLine={{ stroke: "#e9e3ee" }}
+              tickLine={{ stroke: "#e9e3ee" }}
+            />
+            <YAxis
+              tick={{ fill: "#8e8a96", fontSize: 12 }}
+              axisLine={{ stroke: "#e9e3ee" }}
+              tickLine={{ stroke: "#e9e3ee" }}
+              tickFormatter={(value: number) => bytesToGbValue(value)}
+              label={{
+                value: "Gb",
+                angle: -90,
+                position: "insideLeft",
+                fill: "#8e8a96",
+                fontSize: 12,
+              }}
+            />
+            <Tooltip
+              formatter={(value) => {
+                return [bytesToGbLabel(value as number), "Traffic"];
+              }}
+              labelStyle={{ color: "#2d2b32", fontWeight: 600 }}
+              contentStyle={{
+                borderColor: "#e9e3ee",
+                borderRadius: "0.75rem",
+              }}
+            />
+            <Area
+              type="monotone"
+              dataKey="bytes"
+              stroke="#a5402a"
+              strokeWidth={2}
+              fill="url(#trafficAreaFill)"
+              dot={{ r: 2, fill: "#a5402a" }}
+              activeDot={{ r: 4 }}
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </section>
   );
 };

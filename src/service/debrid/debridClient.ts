@@ -140,14 +140,20 @@ export const getDownloads = async (
   token: string,
   options?: GetDownloadsOptions,
 ): Promise<DownloadsResponse> => {
-  const rawLimit = Number.isFinite(options?.limit) ? options.limit! : 20;
+  const limitInput = options?.limit;
+  const rawLimit = typeof limitInput === "number" && Number.isFinite(limitInput)
+    ? limitInput
+    : 20;
   const limit = Math.min(5000, Math.max(0, Math.trunc(rawLimit)));
 
   const params: Record<string, number> = { limit };
-  if (Number.isFinite(options?.page)) {
-    params.page = Math.max(0, Math.trunc(options.page!));
-  } else if (Number.isFinite(options?.offset)) {
-    params.offset = Math.max(0, Math.trunc(options.offset!));
+  const pageInput = options?.page;
+  const offsetInput = options?.offset;
+
+  if (typeof pageInput === "number" && Number.isFinite(pageInput)) {
+    params.page = Math.max(0, Math.trunc(pageInput));
+  } else if (typeof offsetInput === "number" && Number.isFinite(offsetInput)) {
+    params.offset = Math.max(0, Math.trunc(offsetInput));
   }
 
   const data = await debridGet("/downloads", token, params);
@@ -173,14 +179,20 @@ export const getTorrents = async (
   token: string,
   options?: GetTorrentsOptions,
 ): Promise<TorrentsResponse> => {
-  const rawLimit = Number.isFinite(options?.limit) ? options.limit! : 20;
+  const limitInput = options?.limit;
+  const rawLimit = typeof limitInput === "number" && Number.isFinite(limitInput)
+    ? limitInput
+    : 20;
   const limit = Math.min(5000, Math.max(0, Math.trunc(rawLimit)));
 
   const params: Record<string, string | number> = { limit };
-  if (Number.isFinite(options?.page)) {
-    params.page = Math.max(0, Math.trunc(options.page!));
-  } else if (Number.isFinite(options?.offset)) {
-    params.offset = Math.max(0, Math.trunc(options.offset!));
+  const pageInput = options?.page;
+  const offsetInput = options?.offset;
+
+  if (typeof pageInput === "number" && Number.isFinite(pageInput)) {
+    params.page = Math.max(0, Math.trunc(pageInput));
+  } else if (typeof offsetInput === "number" && Number.isFinite(offsetInput)) {
+    params.offset = Math.max(0, Math.trunc(offsetInput));
   }
 
   if (options?.filter === "active") {
