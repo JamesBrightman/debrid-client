@@ -42,7 +42,11 @@ export function DataTable<TData extends object>({
   });
 
   if (data.length === 0) {
-    return <p className="mt-3 text-sm text-[color:var(--muted)]">{emptyText}</p>;
+    return (
+      <p className="mt-4 rounded-xl border border-dashed border-[color:var(--border)] px-4 py-5 text-sm text-[color:var(--muted)]">
+        {emptyText}
+      </p>
+    );
   }
 
   const allRows = table.getRowModel().rows;
@@ -54,28 +58,31 @@ export function DataTable<TData extends object>({
   const visibleRows = allRows.slice(startIndex, endIndex);
 
   return (
-    <div className="mt-3 overflow-x-auto">
-      <table className="w-full border-collapse text-left text-sm">
+    <div className="mt-4 overflow-x-auto">
+      <table className="w-full min-w-[560px] border-separate border-spacing-0 text-left text-sm">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="border-b border-[color:var(--border)] px-2 py-2 text-xs font-semibold uppercase tracking-wide text-[color:var(--muted)]"
+                  className="border-b border-[color:var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--muted)]"
                 >
                   {header.isPlaceholder ? null : (() => {
                     const canSort = header.column.getCanSort();
                     const sortState = header.column.getIsSorted();
                     const sortLabel =
                       sortState === "asc"
-                        ? " ▲"
+                        ? " ^"
                         : sortState === "desc"
-                          ? " ▼"
+                          ? " v"
                           : "";
                     const headerContent = (
                       <>
-                        {flexRender(header.column.columnDef.header, header.getContext())}
+                        {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
                         {sortLabel}
                       </>
                     );
@@ -88,7 +95,7 @@ export function DataTable<TData extends object>({
                       <button
                         type="button"
                         onClick={header.column.getToggleSortingHandler()}
-                        className="cursor-pointer select-none text-left hover:text-[color:var(--foreground)]"
+                        className="cursor-pointer select-none text-left transition-colors hover:text-[color:var(--foreground)]"
                       >
                         {headerContent}
                       </button>
@@ -104,11 +111,11 @@ export function DataTable<TData extends object>({
             <tr
               key={row.id}
               className={`border-b border-[color:var(--border)] ${
-                rowIndex % 2 === 0 ? "bg-white" : "bg-zinc-50"
+                rowIndex % 2 === 0 ? "bg-white/55" : "bg-white/20"
               }`}
             >
               {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="px-2 py-2 align-top">
+                <td key={cell.id} className="px-4 py-3 align-top text-[13px]">
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                 </td>
               ))}

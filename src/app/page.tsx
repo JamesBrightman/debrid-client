@@ -20,37 +20,21 @@ export default function Home() {
       </main>
 
       <section className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-2">
-        <div className="card-shell p-6 sm:p-8">
-          <DebridUser />
-        </div>
-        <div className="card-shell p-6 sm:p-8">
-          <DebridSettings />
-        </div>
-        <div className="card-shell p-6 sm:p-8">
-          <DebridTraffic />
-        </div>
-        <div className="card-shell p-6 sm:p-8">
-          <DebridTrafficDetails />
-        </div>
-        <div className="card-shell p-6 sm:p-8">
-          <DebridDownloads />
-        </div>
-        <div className="card-shell p-6 sm:p-8">
-          <DebridTorrents />
-        </div>
-        <div className="card-shell p-6 sm:p-8">
-          <DebridTorrentsActiveCount />
-        </div>
-        <div className="card-shell p-6 sm:p-8">
-          <DebridTorrentsAvailableHosts />
-        </div>
-        <div className="card-shell p-6 sm:p-8 lg:col-span-2">
+        <DebridUser />
+        <DebridSettings />
+        <DebridTraffic />
+        <DebridTrafficDetails />
+        <DebridDownloads />
+        <DebridTorrents />
+        <DebridTorrentsActiveCount />
+        <DebridTorrentsAvailableHosts />
+        <div className="lg:col-span-2">
           <DebridHosts />
         </div>
-        <div className="card-shell p-6 sm:p-8 lg:col-span-2">
+        <div className="lg:col-span-2">
           <DebridHostsStatus />
         </div>
-        <div className="card-shell p-6 sm:p-8 lg:col-span-2">
+        <div className="lg:col-span-2">
           <DebridHostsDomains />
         </div>
       </section>

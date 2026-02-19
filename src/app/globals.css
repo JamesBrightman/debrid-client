@@ -22,7 +22,9 @@
 
 body {
   background:
-    radial-gradient(circle at 0% 0%, #f9ebea 0%, #f1f0f4 45%), var(--background);
+    radial-gradient(circle at 8% 4%, #fff5ef 0%, rgba(255, 245, 239, 0) 32%),
+    radial-gradient(circle at 92% 2%, #edf2ff 0%, rgba(237, 242, 255, 0) 38%),
+    linear-gradient(180deg, #f6f4fa 0%, #f0edf5 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
 }
@@ -32,12 +34,13 @@ body {
 }
 
 .card-shell {
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.82);
   border-radius: 1.25rem;
-  background: var(--surface);
+  background: linear-gradient(145deg, #ffffff 0%, #f4f0fa 100%);
   box-shadow:
-    0 14px 24px -22px rgba(56, 43, 76, 0.45),
-    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    0 26px 34px -30px rgba(54, 34, 84, 0.75),
+    0 10px 14px -12px rgba(80, 57, 116, 0.26),
+    0 1px 0 rgba(255, 255, 255, 0.94) inset;
 }
 
 .cta-gradient {
