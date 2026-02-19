@@ -7,6 +7,7 @@ import { formatBytes } from "@/utils/formatBytes";
 export const DebridTorrentsAvailableHosts: React.FC = () => {
   const { hasKey } = useDebridApiKey();
   const { data, isLoading, error } = useDebridTorrentsAvailableHosts();
+  const hosts = data ?? [];
 
   if (!hasKey) {
     return (
@@ -44,8 +45,6 @@ export const DebridTorrentsAvailableHosts: React.FC = () => {
       </section>
     );
   }
-
-  const hosts = data ?? [];
 
   return (
     <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">

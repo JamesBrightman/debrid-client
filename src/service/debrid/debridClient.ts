@@ -41,6 +41,18 @@ import {
   torrentsAvailableHostsResponseSchema,
   type TorrentsAvailableHostsResponse,
 } from "@/types/response/torrentsAvailableHostsResponse";
+import {
+  hostsResponseSchema,
+  type HostsResponse,
+} from "@/types/response/hostsResponse";
+import {
+  hostsStatusResponseSchema,
+  type HostsStatusResponse,
+} from "@/types/response/hostsStatusResponse";
+import {
+  hostsDomainsResponseSchema,
+  type HostsDomainsResponse,
+} from "@/types/response/hostsDomainsResponse";
 
 const debridClient = axios.create({
   baseURL: "https://api.real-debrid.com/rest/1.0",
@@ -197,4 +209,24 @@ export const getTorrentsAvailableHosts = async (
   const data = await debridGet("/torrents/availableHosts", token);
 
   return torrentsAvailableHostsResponseSchema.parse(data);
+};
+
+export const getHosts = async (): Promise<HostsResponse> => {
+  const { data } = await debridClient.get("/hosts");
+
+  return hostsResponseSchema.parse(data);
+};
+
+export const getHostsStatus = async (
+  token: string,
+): Promise<HostsStatusResponse> => {
+  const data = await debridGet("/hosts/status", token);
+
+  return hostsStatusResponseSchema.parse(data);
+};
+
+export const getHostsDomains = async (): Promise<HostsDomainsResponse> => {
+  const { data } = await debridClient.get("/hosts/domains");
+
+  return hostsDomainsResponseSchema.parse(data);
 };

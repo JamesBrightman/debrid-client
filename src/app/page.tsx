@@ -1,5 +1,8 @@
 import { DangerZone } from "@/components/danger-zone/DangerZone";
 import { DebridDownloads } from "@/components/debrid-response/DebridDownloads";
+import { DebridHosts } from "@/components/debrid-response/DebridHosts";
+import { DebridHostsDomains } from "@/components/debrid-response/DebridHostsDomains";
+import { DebridHostsStatus } from "@/components/debrid-response/DebridHostsStatus";
 import { DebridSettings } from "@/components/debrid-response/DebridSettings";
 import { DebridTraffic } from "@/components/debrid-response/DebridTraffic";
 import { DebridTrafficDetails } from "@/components/debrid-response/DebridTrafficDetails";
@@ -40,6 +43,15 @@ export default function Home() {
         </div>
         <div className="card-shell p-6 sm:p-8">
           <DebridTorrentsAvailableHosts />
+        </div>
+        <div className="card-shell p-6 sm:p-8 lg:col-span-2">
+          <DebridHosts />
+        </div>
+        <div className="card-shell p-6 sm:p-8 lg:col-span-2">
+          <DebridHostsStatus />
+        </div>
+        <div className="card-shell p-6 sm:p-8 lg:col-span-2">
+          <DebridHostsDomains />
         </div>
       </section>
 
