@@ -4,9 +4,6 @@ import { DebridDownloads } from "@/components/debrid-response/DebridDownloads";
 import { DebridHosts } from "@/components/debrid-response/DebridHosts";
 import { DebridHostsDomains } from "@/components/debrid-response/DebridHostsDomains";
 import { DebridHostsStatus } from "@/components/debrid-response/DebridHostsStatus";
-import { DebridSettings } from "@/components/debrid-response/DebridSettings";
-import { DebridTraffic } from "@/components/debrid-response/DebridTraffic";
-import { DebridTorrentsAvailableHosts } from "@/components/debrid-response/DebridTorrentsAvailableHosts";
 import { DebridTorrents } from "@/components/debrid-response/DebridTorrents";
 import { UserSummary } from "@/components/UserSummary";
 
@@ -26,9 +23,6 @@ export default function Home() {
           <div className="lg:col-span-2">
             <DebridTorrents />
           </div>
-          <DebridTorrentsAvailableHosts />
-          <DebridSettings />
-          <DebridTraffic />
           <div className="lg:col-span-2">
             <DebridHosts />
           </div>

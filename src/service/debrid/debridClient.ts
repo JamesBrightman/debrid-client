@@ -10,14 +10,6 @@ import {
   type UserResponse,
 } from "@/types/response/userResponse";
 import {
-  settingsResponseSchema,
-  type SettingsResponse,
-} from "@/types/response/settingsResponse";
-import {
-  trafficResponseSchema,
-  type TrafficResponse,
-} from "@/types/response/trafficResponse";
-import {
   trafficDetailsResponseSchema,
   type TrafficDetailsResponse,
 } from "@/types/response/trafficDetailsResponse";
@@ -37,10 +29,6 @@ import {
   torrentsActiveCountResponseSchema,
   type TorrentsActiveCountResponse,
 } from "@/types/response/torrentsActiveCountResponse";
-import {
-  torrentsAvailableHostsResponseSchema,
-  type TorrentsAvailableHostsResponse,
-} from "@/types/response/torrentsAvailableHostsResponse";
 import {
   hostsResponseSchema,
   type HostsResponse,
@@ -84,22 +72,10 @@ const debridDelete = async (path: string, token: string): Promise<void> => {
   });
 };
 
-export const getSettings = async (token: string): Promise<SettingsResponse> => {
-  const data = await debridGet("/settings", token);
-
-  return settingsResponseSchema.parse(data);
-};
-
 export const getUser = async (token: string): Promise<UserResponse> => {
   const data = await debridGet("/user", token);
 
   return userResponseSchema.parse(data);
-};
-
-export const getTraffic = async (token: string): Promise<TrafficResponse> => {
-  const data = await debridGet("/traffic", token);
-
-  return trafficResponseSchema.parse(data);
 };
 
 export const getTrafficDetails = async (
@@ -223,14 +199,6 @@ export const getTorrentsActiveCount = async (
   const data = await debridGet("/torrents/activeCount", token);
 
   return torrentsActiveCountResponseSchema.parse(data);
-};
-
-export const getTorrentsAvailableHosts = async (
-  token: string,
-): Promise<TorrentsAvailableHostsResponse> => {
-  const data = await debridGet("/torrents/availableHosts", token);
-
-  return torrentsAvailableHostsResponseSchema.parse(data);
 };
 
 export const getHosts = async (): Promise<HostsResponse> => {
