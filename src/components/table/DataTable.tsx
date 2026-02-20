@@ -66,7 +66,7 @@ export function DataTable<TData extends object>({
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="border-b border-[color:var(--border)] px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[color:var(--muted)]"
+                  className="border-b border-[color:var(--border)] bg-[#eaf2ff]/70 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d5f9f]"
                 >
                   {header.isPlaceholder ? null : (() => {
                     const canSort = header.column.getCanSort();
@@ -111,7 +111,7 @@ export function DataTable<TData extends object>({
             <tr
               key={row.id}
               className={`border-b border-[color:var(--border)] ${
-                rowIndex % 2 === 0 ? "bg-white/55" : "bg-white/20"
+                rowIndex % 2 === 0 ? "bg-white/70" : "bg-[#eef4ff]/45"
               }`}
             >
               {row.getVisibleCells().map((cell) => (
@@ -126,3 +126,5 @@ export function DataTable<TData extends object>({
     </div>
   );
 }
+
+

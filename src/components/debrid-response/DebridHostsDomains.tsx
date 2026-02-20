@@ -13,7 +13,7 @@ type HostDomainRow = {
 };
 
 const panelClassName =
-  "w-full rounded-[1.4rem] border border-white/80 bg-[linear-gradient(145deg,#ffffff,#f4f0fa)] p-5 shadow-[0_24px_36px_-30px_rgba(52,33,82,0.7),0_1px_0_rgba(255,255,255,0.95)_inset]";
+  "w-full rounded-[1.4rem] border border-[#e9f0ff] bg-[linear-gradient(145deg,#ffffff,#ebf3ff)] p-5 shadow-[0_22px_34px_-30px_rgba(72,105,203,0.42),0_1px_0_rgba(255,255,255,0.95)_inset]";
 
 export const DebridHostsDomains: React.FC = () => {
   const { data, isLoading, error } = useDebridHostsDomains();
@@ -56,12 +56,12 @@ export const DebridHostsDomains: React.FC = () => {
 
   if (error) {
     return (
-      <section className="w-full rounded-[1.4rem] border border-[#ffd6ce] bg-[linear-gradient(145deg,#fffaf8,#fff0eb)] p-5 shadow-[0_20px_30px_-30px_rgba(165,64,42,0.85),0_1px_0_rgba(255,255,255,0.95)_inset]">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a5402a]/80">
+      <section className="w-full rounded-[1.4rem] border border-[#f5c5b3] bg-[linear-gradient(145deg,#fff9f5,#ffece2)] p-5 shadow-[0_20px_30px_-30px_rgba(186,88,54,0.55),0_1px_0_rgba(255,255,255,0.95)_inset]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b25533]/85">
           Network
         </p>
-        <h2 className="mt-2 text-lg font-semibold text-[#a5402a]">Host Domains</h2>
-        <p className="mt-3 text-sm text-[#a5402a]">{error.message}</p>
+        <h2 className="mt-2 text-lg font-semibold text-[#b25533]">Host Domains</h2>
+        <p className="mt-3 text-sm text-[#b25533]">{error.message}</p>
       </section>
     );
   }
@@ -80,7 +80,7 @@ export const DebridHostsDomains: React.FC = () => {
             Domain-level endpoints available in the network.
           </p>
         </div>
-        <span className="rounded-full border border-white/85 bg-[#f5f0fb] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--foreground)] shadow-[0_12px_16px_-15px_rgba(43,29,68,0.85),0_1px_0_rgba(255,255,255,0.95)_inset]">
+        <span className="rounded-full border border-[#b9ceff] bg-[#dce8ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#264a93]">
           {domains.length} domains
         </span>
       </div>
@@ -110,3 +110,5 @@ export const DebridHostsDomains: React.FC = () => {
     </section>
   );
 };
+
+

@@ -6,7 +6,6 @@ import { useDebridTorrentsActiveCount } from "@/hooks/useDebridTorrentsActiveCou
 export const DebridTorrentsActiveCount: React.FC = () => {
   const { hasKey } = useDebridApiKey();
   const { data, isLoading, error } = useDebridTorrentsActiveCount();
-  console.log(data);
 
   if (!hasKey) {
     return (
@@ -66,3 +65,5 @@ export const DebridTorrentsActiveCount: React.FC = () => {
     </section>
   );
 };
+
+

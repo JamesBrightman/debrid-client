@@ -6,6 +6,7 @@ import { useDebridApiKey } from "@/hooks/useDebridApiKey";
 import { useDebridHostsStatus } from "@/hooks/useDebridHostsStatus";
 import { DataTable } from "@/components/table/DataTable";
 import { PaginationControls } from "@/components/table/PaginationControls";
+import { HostStatusSummaryCards } from "@/components/debrid-response/HostStatusSummaryCards";
 
 const PAGE_SIZE = 20;
 
@@ -17,26 +18,26 @@ type HostStatusRowData = {
 };
 
 const panelClassName =
-  "w-full rounded-[1.4rem] border border-white/80 bg-[linear-gradient(145deg,#ffffff,#f4f0fa)] p-5 shadow-[0_24px_36px_-30px_rgba(52,33,82,0.7),0_1px_0_rgba(255,255,255,0.95)_inset]";
+  "w-full rounded-[1.4rem] border border-[#e9f0ff] bg-[linear-gradient(145deg,#ffffff,#ebf3ff)] p-5 shadow-[0_22px_34px_-30px_rgba(72,105,203,0.42),0_1px_0_rgba(255,255,255,0.95)_inset]";
 
 const getStatusClass = (status: string): string => {
   if (status === "up") {
-    return "bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200";
+    return "bg-[#dcf4d5] text-[#2f6f36] ring-1 ring-[#a8d39f]";
   }
 
   if (status === "down") {
-    return "bg-rose-100 text-rose-700 ring-1 ring-rose-200";
+    return "bg-[#ffe0da] text-[#b1462f] ring-1 ring-[#f1b6a8]";
   }
 
-  return "bg-amber-100 text-amber-700 ring-1 ring-amber-200";
+  return "bg-[#ffeab8] text-[#9b6a00] ring-1 ring-[#f0cf79]";
 };
 
 const getSupportedClass = (supported: number): string => {
   if (supported === 1) {
-    return "bg-sky-100 text-sky-700 ring-1 ring-sky-200";
+    return "bg-[#dcebff] text-[#1f4f9b] ring-1 ring-[#a8c3f5]";
   }
 
-  return "bg-zinc-100 text-zinc-600 ring-1 ring-zinc-200";
+  return "bg-[#eceff3] text-[#4e5766] ring-1 ring-[#cbd2dd]";
 };
 
 export const DebridHostsStatus: React.FC = () => {
@@ -46,14 +47,12 @@ export const DebridHostsStatus: React.FC = () => {
   const hosts = useMemo<Array<HostStatusRowData>>(
     () =>
       Object.entries(data ?? {})
-        .map(([domain, item]) => {
-          return {
-            domain,
-            name: item.name,
-            status: item.status,
-            supported: item.supported,
-          };
-        })
+        .map(([domain, item]) => ({
+          domain,
+          name: item.name,
+          status: item.status,
+          supported: item.supported,
+        }))
         .sort((a, b) => a.name.localeCompare(b.name)),
     [data],
   );
@@ -129,12 +128,14 @@ export const DebridHostsStatus: React.FC = () => {
 
   if (error) {
     return (
-      <section className="w-full rounded-[1.4rem] border border-[#ffd6ce] bg-[linear-gradient(145deg,#fffaf8,#fff0eb)] p-5 shadow-[0_20px_30px_-30px_rgba(165,64,42,0.85),0_1px_0_rgba(255,255,255,0.95)_inset]">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a5402a]/80">
+      <section className="w-full rounded-[1.4rem] border border-[#f5c5b3] bg-[linear-gradient(145deg,#fff9f5,#ffece2)] p-5 shadow-[0_20px_30px_-30px_rgba(186,88,54,0.55),0_1px_0_rgba(255,255,255,0.95)_inset]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b25533]/85">
           Runtime
         </p>
-        <h2 className="mt-2 text-lg font-semibold text-[#a5402a]">Host Status</h2>
-        <p className="mt-3 text-sm text-[#a5402a]">{error.message}</p>
+        <h2 className="mt-2 text-lg font-semibold text-[#b25533]">
+          Host Status
+        </h2>
+        <p className="mt-3 text-sm text-[#b25533]">{error.message}</p>
       </section>
     );
   }
@@ -159,33 +160,17 @@ export const DebridHostsStatus: React.FC = () => {
             Real-time operational and support availability by host.
           </p>
         </div>
-        <span className="rounded-full border border-white/85 bg-[#f5f0fb] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[color:var(--foreground)] shadow-[0_12px_16px_-15px_rgba(43,29,68,0.85),0_1px_0_rgba(255,255,255,0.95)_inset]">
+        <span className="rounded-full border border-[#b9ceff] bg-[#dce8ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#264a93]">
           {hosts.length} hosts
         </span>
       </div>
 
-      <div className="mt-4 grid gap-2 sm:grid-cols-3">
-        <div className="rounded-xl border border-white/85 bg-[#ecfdf3] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-700/80">
-            Up
-          </p>
-          <p className="mt-1 text-lg font-semibold text-emerald-700">{upCount}</p>
-        </div>
-        <div className="rounded-xl border border-white/85 bg-[#fff1f1] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-rose-700/80">
-            Down
-          </p>
-          <p className="mt-1 text-lg font-semibold text-rose-700">{downCount}</p>
-        </div>
-        <div className="rounded-xl border border-white/85 bg-[#fff9e9] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-700/80">
-            Unsupported
-          </p>
-          <p className="mt-1 text-lg font-semibold text-amber-700">
-            {unsupportedCount}
-          </p>
-        </div>
-      </div>
+      <HostStatusSummaryCards
+        upCount={upCount}
+        downCount={downCount}
+        unsupportedCount={unsupportedCount}
+        className="mt-4"
+      />
 
       {hosts.length === 0 ? (
         <p className="mt-4 rounded-xl border border-dashed border-[color:var(--border)] px-4 py-5 text-sm text-[color:var(--muted)]">

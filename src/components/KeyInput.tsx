@@ -42,7 +42,7 @@ export const KeyInput: React.FC = () => {
             name="debrid_api_token"
             type={isVisible ? "text" : "password"}
             autoComplete={isVisible ? "off" : "new-password"}
-            className="peer w-full rounded-xl border border-(--border) bg-(--surface-soft) px-3 pb-2.5 pt-5 text-sm text-foreground outline-none transition focus:border-(--accent-coral) focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
+            className="peer w-full rounded-xl border border-(--border) bg-(--surface-soft) px-3 pb-2.5 pt-5 text-sm text-[color:var(--foreground)] outline-none transition focus:border-(--accent-coral) focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
             value={localKeyVal}
             onChange={(e) => setLocalKeyVal(e.target.value)}
             placeholder=" "
@@ -98,3 +98,5 @@ export const KeyInput: React.FC = () => {
     </form>
   );
 };
+
+

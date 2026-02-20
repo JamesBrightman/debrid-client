@@ -20,7 +20,7 @@ type TimelineItem = {
 };
 
 const panelClassName =
-  "w-full rounded-[1.4rem] border border-white/80 bg-[linear-gradient(145deg,#ffffff,#f4f0fa)] p-5 shadow-[0_24px_36px_-30px_rgba(52,33,82,0.7),0_1px_0_rgba(255,255,255,0.95)_inset]";
+  "w-full rounded-[1.4rem] border border-[#e9f0ff] bg-[linear-gradient(145deg,#ffffff,#ebf3ff)] p-5 shadow-[0_22px_34px_-30px_rgba(72,105,203,0.42),0_1px_0_rgba(255,255,255,0.95)_inset]";
 
 const toLocalDateString = (date: Date): string => {
   const year = date.getFullYear();
@@ -107,14 +107,14 @@ export const DebridTrafficDetails: React.FC = () => {
 
   if (error) {
     return (
-      <section className="w-full rounded-[1.4rem] border border-[#ffd6ce] bg-[linear-gradient(145deg,#fffaf8,#fff0eb)] p-5 shadow-[0_20px_30px_-30px_rgba(165,64,42,0.85),0_1px_0_rgba(255,255,255,0.95)_inset]">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#a5402a]/80">
+      <section className="w-full rounded-[1.4rem] border border-[#f5c5b3] bg-[linear-gradient(145deg,#fff9f5,#ffece2)] p-5 shadow-[0_20px_30px_-30px_rgba(186,88,54,0.55),0_1px_0_rgba(255,255,255,0.95)_inset]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b25533]/85">
           Traffic Analytics
         </p>
-        <h2 className="mt-2 text-lg font-semibold text-[#a5402a]">
+        <h2 className="mt-2 text-lg font-semibold text-[#b25533]">
           Traffic - Last 7 Days
         </h2>
-        <p className="mt-3 text-sm text-[#a5402a]">{error.message}</p>
+        <p className="mt-3 text-sm text-[#b25533]">{error.message}</p>
       </section>
     );
   }
@@ -144,27 +144,27 @@ export const DebridTrafficDetails: React.FC = () => {
       </div>
 
       <div className="mt-4 grid gap-2 sm:grid-cols-3">
-        <div className="rounded-xl border border-white/85 bg-[#edf1ff] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-700/80">
+        <div className="rounded-xl border border-[#a8d39f] bg-[#e4f9de] px-4 py-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#2f6f36]/90">
             Total
           </p>
-          <p className="mt-1 text-lg font-semibold text-indigo-700">
+          <p className="mt-1 text-lg font-semibold text-[#2f6f36]">
             {bytesToGbLabel(totalBytes)}
           </p>
         </div>
-        <div className="rounded-xl border border-white/85 bg-[#f4f0ff] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-700/80">
+        <div className="rounded-xl border border-[#98b7f0] bg-[#d9e8ff] px-4 py-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#365fa8]/90">
             Daily Avg
           </p>
-          <p className="mt-1 text-lg font-semibold text-violet-700">
+          <p className="mt-1 text-lg font-semibold text-[#365fa8]">
             {bytesToGbLabel(averageBytes)}
           </p>
         </div>
-        <div className="rounded-xl border border-white/85 bg-[#fff6f1] px-4 py-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-orange-700/80">
+        <div className="rounded-xl border border-[#f0cf79] bg-[#fff0c8] px-4 py-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9b6a00]/90">
             Peak Day
           </p>
-          <p className="mt-1 text-lg font-semibold text-orange-700">
+          <p className="mt-1 text-lg font-semibold text-[#9b6a00]">
             {peakDay.dateLabel}
           </p>
         </div>
@@ -178,27 +178,27 @@ export const DebridTrafficDetails: React.FC = () => {
           >
             <defs>
               <linearGradient id="trafficAreaFillNeo" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#4f6fff" stopOpacity={0.45} />
-                <stop offset="95%" stopColor="#4f6fff" stopOpacity={0.03} />
+                <stop offset="5%" stopColor="#4b6fd1" stopOpacity={0.48} />
+                <stop offset="95%" stopColor="#4b6fd1" stopOpacity={0.04} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="4 4" stroke="#ddd6e6" />
+            <CartesianGrid strokeDasharray="4 4" stroke="#c8d3e4" />
             <XAxis
               dataKey="dateLabel"
-              tick={{ fill: "#847f91", fontSize: 12 }}
-              axisLine={{ stroke: "#ddd6e6" }}
-              tickLine={{ stroke: "#ddd6e6" }}
+              tick={{ fill: "#4b5563", fontSize: 12 }}
+              axisLine={{ stroke: "#c8d3e4" }}
+              tickLine={{ stroke: "#c8d3e4" }}
             />
             <YAxis
-              tick={{ fill: "#847f91", fontSize: 12 }}
-              axisLine={{ stroke: "#ddd6e6" }}
-              tickLine={{ stroke: "#ddd6e6" }}
+              tick={{ fill: "#4b5563", fontSize: 12 }}
+              axisLine={{ stroke: "#c8d3e4" }}
+              tickLine={{ stroke: "#c8d3e4" }}
               tickFormatter={(value: number) => bytesToGbValue(value)}
               label={{
                 value: "GB",
                 angle: -90,
                 position: "insideLeft",
-                fill: "#847f91",
+                fill: "#4b5563",
                 fontSize: 12,
               }}
             />
@@ -206,22 +206,22 @@ export const DebridTrafficDetails: React.FC = () => {
               formatter={(value) => {
                 return [bytesToGbLabel(value as number), "Traffic"];
               }}
-              labelStyle={{ color: "#2d2b32", fontWeight: 600 }}
+              labelStyle={{ color: "#111827", fontWeight: 600 }}
               contentStyle={{
-                backgroundColor: "rgba(255,255,255,0.96)",
-                borderColor: "#e1dae9",
+                backgroundColor: "rgba(255,255,255,0.98)",
+                borderColor: "#b8c9e8",
                 borderRadius: "0.9rem",
-                boxShadow: "0 20px 28px -24px rgba(52,33,82,0.8)",
+                boxShadow: "0 20px 28px -24px rgba(72,105,203,0.35)",
               }}
             />
             <Area
               type="monotone"
               dataKey="bytes"
-              stroke="#4f6fff"
+              stroke="#4b6fd1"
               strokeWidth={2.5}
               fill="url(#trafficAreaFillNeo)"
-              dot={{ r: 2.5, fill: "#4f6fff" }}
-              activeDot={{ r: 4.5, fill: "#3855de" }}
+              dot={{ r: 2.5, fill: "#4b6fd1" }}
+              activeDot={{ r: 4.5, fill: "#2f56bf" }}
             />
           </AreaChart>
         </ResponsiveContainer>
@@ -229,3 +229,5 @@ export const DebridTrafficDetails: React.FC = () => {
     </section>
   );
 };
+
+

@@ -1,6 +1,7 @@
 import { DangerZone } from "@/components/danger-zone/DangerZone";
 import { DebridDownloads } from "@/components/debrid-response/DebridDownloads";
 import { DebridHosts } from "@/components/debrid-response/DebridHosts";
+import { DebridHostsSummary } from "@/components/debrid-response/DebridHostsSummary";
 import { DebridHostsDomains } from "@/components/debrid-response/DebridHostsDomains";
 import { DebridHostsStatus } from "@/components/debrid-response/DebridHostsStatus";
 import { DebridSettings } from "@/components/debrid-response/DebridSettings";
@@ -19,15 +20,18 @@ export default function Home() {
         <UserSummary />
       </main>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-6 lg:grid-cols-2">
-        <DebridUser />
-        <DebridSettings />
-        <DebridTraffic />
+      <section className="mx-auto grid w-full max-w-6xl items-start gap-6 lg:grid-cols-2">
+        <div className="space-y-6">
+          <DebridHostsSummary />
+          <DebridTorrentsActiveCount />
+          <DebridUser />
+        </div>
         <DebridTrafficDetails />
         <DebridDownloads />
         <DebridTorrents />
-        <DebridTorrentsActiveCount />
         <DebridTorrentsAvailableHosts />
+        <DebridSettings />
+        <DebridTraffic />
         <div className="lg:col-span-2">
           <DebridHosts />
         </div>
