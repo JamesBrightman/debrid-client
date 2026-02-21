@@ -1,3 +1,5 @@
+"use server";
+
 import axios from "axios";
 import {
   serverTimeResponseSchema,
@@ -141,7 +143,11 @@ export const getDownloads = async (
   token: string,
   options?: GetDownloadsOptions,
 ): Promise<DownloadsResponse> => {
-  const data = await debridGet("/downloads", token, buildListRequestParams(options));
+  const data = await debridGet(
+    "/downloads",
+    token,
+    buildListRequestParams(options),
+  );
 
   return downloadsResponseSchema.parse(data);
 };
