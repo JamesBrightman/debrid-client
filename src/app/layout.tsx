@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-app-ombre font-sans text-slate-900 antialiased selection:bg-coral-300`}
       >
         <ClientProvider>
           <div className="min-h-screen">

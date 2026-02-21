@@ -22,26 +22,27 @@ export const HostStatusSummaryCards: React.FC<HostStatusSummaryCardsProps> = ({
 
   return (
     <div className={containerClassName}>
-      <div className="rounded-xl border border-[#a8d39f] bg-[#e4f9de] px-4 py-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#2f6f36]/90">
+      <div className="rounded-xl border border-sage-300 bg-sage-100 px-4 py-3">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-sage-800/90">
           Up
         </p>
-        <p className="mt-1 text-lg font-semibold text-[#2f6f36]">{upCount}</p>
+        <p className="mt-1 text-lg font-semibold text-sage-800">{upCount}</p>
       </div>
-      <div className="rounded-xl border border-[#f1b6a8] bg-[#ffe7df] px-4 py-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#b1462f]/90">
+      <div className="rounded-xl border border-coral-300 bg-coral-100 px-4 py-3">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-coral-700/90">
           Down
         </p>
-        <p className="mt-1 text-lg font-semibold text-[#b1462f]">{downCount}</p>
+        <p className="mt-1 text-lg font-semibold text-coral-700">{downCount}</p>
       </div>
-      <div className="rounded-xl border border-[#f0cf79] bg-[#fff0c8] px-4 py-3">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[#9b6a00]/90">
+      <div className="rounded-xl border border-amber-300 bg-amber-100 px-4 py-3">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-700/90">
           Unsupported
         </p>
-        <p className="mt-1 text-lg font-semibold text-[#9b6a00]">
+        <p className="mt-1 text-lg font-semibold text-amber-700">
           {unsupportedCount}
         </p>
       </div>
     </div>
   );
 };
+

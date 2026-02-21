@@ -35,15 +35,15 @@ export const UserSummary: React.FC = () => {
       : null;
 
   return (
-    <section className="card-shell relative overflow-hidden p-6 sm:p-8">
-      <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-[color:var(--accent-coral-soft)] blur-xl" />
+    <section className="relative overflow-hidden rounded-[1.25rem] border border-sky-300 bg-gradient-to-br from-slate-100 to-sky-100 p-6 shadow-card sm:p-8">
+      <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-coral-50 blur-xl" />
       <div className="relative flex items-start justify-between gap-4">
         <div className="space-y-3">
           <UserStatusBadge isPremium={isPremium} />
-          <h2 className="text-xl font-semibold text-[color:var(--foreground)]">
+          <h2 className="text-xl font-semibold text-slate-900">
             Welcome{username ? `, ${username}` : ""}
           </h2>
-          <div className="space-y-1 text-sm text-[color:var(--muted)]">
+          <div className="space-y-1 text-sm text-slate-600">
             <p>{user.email ?? "-"}</p>
             <p>Points: {user.points ?? "-"}</p>
             <div className="flex items-center gap-3">
@@ -61,7 +61,7 @@ export const UserSummary: React.FC = () => {
           </div>
         </div>
 
-        <div className="h-14 w-14 shrink-0 rounded-full border-2 border-white bg-[color:var(--surface-soft)] shadow-sm">
+        <div className="h-14 w-14 shrink-0 rounded-full border-2 border-white bg-sky-50 shadow-sm">
           {hasAvatar ? (
             <div
               className="h-full w-full rounded-full bg-cover bg-center"
@@ -75,5 +75,6 @@ export const UserSummary: React.FC = () => {
     </section>
   );
 };
+
 
 

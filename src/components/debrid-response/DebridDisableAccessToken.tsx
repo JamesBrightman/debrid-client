@@ -34,13 +34,14 @@ export const DebridDisableAccessToken: React.FC = () => {
         onApprove={handleApprove}
       />
       {error ? (
-        <p className="mt-3 text-sm text-[#a5402a]">{error.message}</p>
+        <p className="mt-3 text-sm text-coral-800">{error.message}</p>
       ) : null}
       {isSuccess ? (
-        <p className="mt-3 text-sm text-[#a5402a]">
+        <p className="mt-3 text-sm text-coral-800">
           {data?.trim() ? data : "Access token disabled."}
         </p>
       ) : null}
     </DangerZoneAPICard>
   );
 };
+

@@ -9,11 +9,11 @@ export const DebridTorrentsActiveCount: React.FC = () => {
 
   if (!hasKey) {
     return (
-      <section className="w-full rounded-xl border border-dashed border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+      <section className="w-full rounded-xl border border-dashed border-sky-300 bg-sky-50 p-4 shadow-card">
+        <h2 className="text-base font-semibold text-slate-900">
           Active Torrents
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">
+        <p className="mt-2 text-sm text-slate-600">
           Add a token to load active torrent count.
         </p>
       </section>
@@ -22,11 +22,11 @@ export const DebridTorrentsActiveCount: React.FC = () => {
 
   if (isLoading) {
     return (
-      <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+      <section className="w-full rounded-xl border border-sky-300 bg-sky-50 p-4 shadow-card">
+        <h2 className="text-base font-semibold text-slate-900">
           Active Torrents
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">
+        <p className="mt-2 text-sm text-slate-600">
           Loading active torrent count...
         </p>
       </section>
@@ -35,11 +35,11 @@ export const DebridTorrentsActiveCount: React.FC = () => {
 
   if (error) {
     return (
-      <section className="w-full rounded-xl border border-[#ffd5cc] bg-[color:var(--accent-coral-soft)] p-4">
-        <h2 className="text-base font-semibold text-[#a5402a]">
+      <section className="w-full rounded-xl border border-coral-200 bg-coral-50 p-4 shadow-card-coral">
+        <h2 className="text-base font-semibold text-coral-800">
           Active Torrents
         </h2>
-        <p className="mt-2 text-sm text-[#a5402a]">{error.message}</p>
+        <p className="mt-2 text-sm text-coral-800">{error.message}</p>
       </section>
     );
   }
@@ -49,21 +49,22 @@ export const DebridTorrentsActiveCount: React.FC = () => {
   const percentage = limit > 0 ? Math.min(100, (active / limit) * 100) : 0;
 
   return (
-    <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-      <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+    <section className="w-full rounded-xl border border-sky-300 bg-sky-50 p-4 shadow-card">
+      <h2 className="text-base font-semibold text-slate-900">
         Active Torrents
       </h2>
-      <p className="mt-3 text-2xl font-semibold text-[color:var(--foreground)]">
+      <p className="mt-3 text-2xl font-semibold text-slate-900">
         {active} / {limit}
       </p>
       <div className="mt-3 h-2 rounded-full bg-zinc-200">
         <div
-          className="h-full rounded-full bg-[#a5402a]"
+          className="h-full rounded-full bg-coral-800"
           style={{ width: `${percentage}%` }}
         />
       </div>
     </section>
   );
 };
+
 
 

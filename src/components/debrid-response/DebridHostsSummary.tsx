@@ -23,11 +23,11 @@ export const DebridHostsSummary: React.FC = () => {
 
   if (!hasKey) {
     return (
-      <section className="w-full rounded-xl border border-dashed border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+      <section className="w-full rounded-xl border border-dashed border-sky-300 bg-sky-50 p-4 shadow-card">
+        <h2 className="text-base font-semibold text-slate-900">
           Host health
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">
+        <p className="mt-2 text-sm text-slate-600">
           Add a token to load host status.
         </p>
       </section>
@@ -36,11 +36,11 @@ export const DebridHostsSummary: React.FC = () => {
 
   if (isLoading) {
     return (
-      <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+      <section className="w-full rounded-xl border border-sky-300 bg-sky-50 p-4 shadow-card">
+        <h2 className="text-base font-semibold text-slate-900">
           Host health
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">
+        <p className="mt-2 text-sm text-slate-600">
           Loading host status...
         </p>
       </section>
@@ -49,20 +49,20 @@ export const DebridHostsSummary: React.FC = () => {
 
   if (error) {
     return (
-      <section className="w-full rounded-xl border border-[#ffd5cc] bg-[color:var(--accent-coral-soft)] p-4">
-        <h2 className="text-base font-semibold text-[#a5402a]">Hosts</h2>
-        <p className="mt-2 text-sm text-[#a5402a]">{error.message}</p>
+      <section className="w-full rounded-xl border border-coral-200 bg-coral-50 p-4 shadow-card-coral">
+        <h2 className="text-base font-semibold text-coral-800">Hosts</h2>
+        <p className="mt-2 text-sm text-coral-800">{error.message}</p>
       </section>
     );
   }
 
   if (Object.keys(data ?? {}).length === 0) {
     return (
-      <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+      <section className="w-full rounded-xl border border-sky-300 bg-sky-50 p-4 shadow-card">
+        <h2 className="text-base font-semibold text-slate-900">
           Host health
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">
+        <p className="mt-2 text-sm text-slate-600">
           No host status found.
         </p>
       </section>
@@ -70,8 +70,8 @@ export const DebridHostsSummary: React.FC = () => {
   }
 
   return (
-    <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-      <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+    <section className="w-full rounded-xl border border-sky-300 bg-sky-50 p-4 shadow-card">
+      <h2 className="text-base font-semibold text-slate-900">
         Host health
       </h2>
       <HostStatusSummaryCards
@@ -83,3 +83,4 @@ export const DebridHostsSummary: React.FC = () => {
     </section>
   );
 };
+

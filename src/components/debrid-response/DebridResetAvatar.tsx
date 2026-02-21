@@ -36,12 +36,13 @@ export const DebridResetAvatar: React.FC = () => {
         onCancel={() => setIsApprovalOpen(false)}
         onApprove={handleApprove}
       />
-      {error ? <p className="mt-3 text-sm text-[#a5402a]">{error.message}</p> : null}
+      {error ? <p className="mt-3 text-sm text-coral-800">{error.message}</p> : null}
       {isSuccess ? (
-        <p className="mt-3 text-sm text-[#a5402a]">
+        <p className="mt-3 text-sm text-coral-800">
           Avatar reset to default.
         </p>
       ) : null}
     </DangerZoneAPICard>
   );
 };
+

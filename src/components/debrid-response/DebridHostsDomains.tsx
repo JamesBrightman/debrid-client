@@ -13,7 +13,7 @@ type HostDomainRow = {
 };
 
 const panelClassName =
-  "w-full rounded-[1.4rem] border border-[#e9f0ff] bg-[linear-gradient(145deg,#ffffff,#ebf3ff)] p-5 shadow-[0_22px_34px_-30px_rgba(72,105,203,0.42),0_1px_0_rgba(255,255,255,0.95)_inset]";
+  "w-full rounded-[1.4rem] border border-ocean-100 bg-gradient-to-br from-white to-ocean-50 p-5 shadow-card";
 
 export const DebridHostsDomains: React.FC = () => {
   const { data, isLoading, error } = useDebridHostsDomains();
@@ -41,13 +41,13 @@ export const DebridHostsDomains: React.FC = () => {
   if (isLoading) {
     return (
       <section className={panelClassName}>
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600">
           Network
         </p>
-        <h2 className="mt-2 text-lg font-semibold text-[color:var(--foreground)]">
+        <h2 className="mt-2 text-lg font-semibold text-slate-900">
           Host Domains
         </h2>
-        <p className="mt-3 rounded-xl border border-dashed border-[color:var(--border)] px-4 py-4 text-sm text-[color:var(--muted)]">
+        <p className="mt-3 rounded-xl border border-dashed border-sky-300 px-4 py-4 text-sm text-slate-600">
           Loading domains...
         </p>
       </section>
@@ -56,12 +56,12 @@ export const DebridHostsDomains: React.FC = () => {
 
   if (error) {
     return (
-      <section className="w-full rounded-[1.4rem] border border-[#f5c5b3] bg-[linear-gradient(145deg,#fff9f5,#ffece2)] p-5 shadow-[0_20px_30px_-30px_rgba(186,88,54,0.55),0_1px_0_rgba(255,255,255,0.95)_inset]">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#b25533]/85">
+      <section className="w-full rounded-[1.4rem] border border-coral-200 bg-gradient-to-br from-coral-50 to-coral-100 p-5 shadow-card-coral">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-coral-700/85">
           Network
         </p>
-        <h2 className="mt-2 text-lg font-semibold text-[#b25533]">Host Domains</h2>
-        <p className="mt-3 text-sm text-[#b25533]">{error.message}</p>
+        <h2 className="mt-2 text-lg font-semibold text-coral-700">Host Domains</h2>
+        <p className="mt-3 text-sm text-coral-700">{error.message}</p>
       </section>
     );
   }
@@ -70,17 +70,17 @@ export const DebridHostsDomains: React.FC = () => {
     <section className={panelClassName}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--muted)]">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-600">
             Network
           </p>
-          <h2 className="mt-1 text-lg font-semibold text-[color:var(--foreground)]">
+          <h2 className="mt-1 text-lg font-semibold text-slate-900">
             Host Domains
           </h2>
-          <p className="mt-1 text-xs text-[color:var(--muted)]">
+          <p className="mt-1 text-xs text-slate-600">
             Domain-level endpoints available in the network.
           </p>
         </div>
-        <span className="rounded-full border border-[#b9ceff] bg-[#dce8ff] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[#264a93]">
+        <span className="rounded-full border border-ocean-200 bg-ocean-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-ocean-800">
           {domains.length} domains
         </span>
       </div>
@@ -95,7 +95,7 @@ export const DebridHostsDomains: React.FC = () => {
 
       {domains.length > 0 ? (
         <>
-          <p className="mt-4 text-xs uppercase tracking-[0.14em] text-[color:var(--muted)]">
+          <p className="mt-4 text-xs uppercase tracking-[0.14em] text-slate-600">
             Total rows: {domains.length}
           </p>
           <PaginationControls
@@ -110,5 +110,6 @@ export const DebridHostsDomains: React.FC = () => {
     </section>
   );
 };
+
 
 

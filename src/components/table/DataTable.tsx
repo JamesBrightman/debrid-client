@@ -43,7 +43,7 @@ export function DataTable<TData extends object>({
 
   if (data.length === 0) {
     return (
-      <p className="mt-4 rounded-xl border border-dashed border-[color:var(--border)] px-4 py-5 text-sm text-[color:var(--muted)]">
+      <p className="mt-4 rounded-xl border border-dashed border-sky-300 px-4 py-5 text-sm text-slate-600">
         {emptyText}
       </p>
     );
@@ -66,7 +66,7 @@ export function DataTable<TData extends object>({
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="border-b border-[color:var(--border)] bg-[#eaf2ff]/70 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#3d5f9f]"
+                  className="border-b border-sky-300 bg-ocean-50/70 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-ocean-700"
                 >
                   {header.isPlaceholder ? null : (() => {
                     const canSort = header.column.getCanSort();
@@ -95,7 +95,7 @@ export function DataTable<TData extends object>({
                       <button
                         type="button"
                         onClick={header.column.getToggleSortingHandler()}
-                        className="cursor-pointer select-none text-left transition-colors hover:text-[color:var(--foreground)]"
+                        className="cursor-pointer select-none text-left transition-colors hover:text-slate-900"
                       >
                         {headerContent}
                       </button>
@@ -110,8 +110,8 @@ export function DataTable<TData extends object>({
           {visibleRows.map((row, rowIndex) => (
             <tr
               key={row.id}
-              className={`border-b border-[color:var(--border)] ${
-                rowIndex % 2 === 0 ? "bg-white/70" : "bg-[#eef4ff]/45"
+              className={`border-b border-sky-300 ${
+                rowIndex % 2 === 0 ? "bg-white/70" : "bg-ocean-50/45"
               }`}
             >
               {row.getVisibleCells().map((cell) => (
@@ -126,5 +126,6 @@ export function DataTable<TData extends object>({
     </div>
   );
 }
+
 
 

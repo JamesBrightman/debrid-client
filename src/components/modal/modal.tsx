@@ -28,12 +28,12 @@ export const Modal: React.FC<ModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-xl border border-[color:var(--border)] bg-[color:var(--surface)] p-5 shadow-xl"
+        className="w-full max-w-md rounded-xl border border-sky-300 bg-white p-5 shadow-xl"
         onClick={(event) => event.stopPropagation()}
       >
         <h3
           id="modal-title"
-          className="text-base font-semibold text-[color:var(--foreground)]"
+          className="text-base font-semibold text-slate-900"
         >
           {title}
         </h3>
@@ -42,5 +42,6 @@ export const Modal: React.FC<ModalProps> = ({
     </div>
   );
 };
+
 
 

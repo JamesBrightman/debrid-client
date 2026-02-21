@@ -17,7 +17,7 @@ export const ManualApprovalModal: React.FC<ManualApprovalModalProps> = ({
 }) => {
   return (
     <Modal isOpen={isOpen} title="Manual Approval Required" onClose={onCancel}>
-      <p className="text-sm text-[color:var(--muted)]">
+      <p className="text-sm text-slate-600">
         Are you sure? This action cannot be reversed.
       </p>
       <div className="mt-4 flex items-center justify-end gap-2">
@@ -25,7 +25,7 @@ export const ManualApprovalModal: React.FC<ManualApprovalModalProps> = ({
           type="button"
           onClick={onCancel}
           disabled={isLoading}
-          className="rounded-lg border border-[color:var(--border)] px-3 py-2 text-sm text-[color:var(--foreground)] transition hover:bg-[color:var(--surface-soft)] disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-lg border border-sky-300 px-3 py-2 text-sm text-slate-900 transition hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Cancel
         </button>
@@ -33,7 +33,7 @@ export const ManualApprovalModal: React.FC<ManualApprovalModalProps> = ({
           type="button"
           onClick={onApprove}
           disabled={isLoading}
-          className="rounded-lg bg-[#a5402a] px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-lg bg-coral-800 px-3 py-2 text-sm font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Yes
         </button>
@@ -41,5 +41,6 @@ export const ManualApprovalModal: React.FC<ManualApprovalModalProps> = ({
     </Modal>
   );
 };
+
 
 

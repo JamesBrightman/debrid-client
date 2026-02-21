@@ -42,14 +42,14 @@ export const KeyInput: React.FC = () => {
             name="debrid_api_token"
             type={isVisible ? "text" : "password"}
             autoComplete={isVisible ? "off" : "new-password"}
-            className="peer w-full rounded-xl border border-(--border) bg-(--surface-soft) px-3 pb-2.5 pt-5 text-sm text-[color:var(--foreground)] outline-none transition focus:border-(--accent-coral) focus:ring-2 focus:ring-[rgba(255,140,113,0.25)]"
+            className="peer w-full rounded-xl border border-sky-300 bg-sky-50 px-3 pb-2.5 pt-5 text-sm text-slate-900 outline-none transition focus:border-coral-500 focus:ring-2 focus:ring-coral-300/40"
             value={localKeyVal}
             onChange={(e) => setLocalKeyVal(e.target.value)}
             placeholder=" "
           />
           <label
             htmlFor="debrid-key"
-            className={`pointer-events-none absolute left-3 text-[color:var(--muted)] transition-all duration-150 ${
+            className={`pointer-events-none absolute left-3 text-slate-600 transition-all duration-150 ${
               localKeyVal.trim()
                 ? "top-1.5 text-[11px]"
                 : "top-1/2 -translate-y-1/2 text-sm peer-focus:top-1.5 peer-focus:translate-y-0 peer-focus:text-[11px]"
@@ -61,7 +61,7 @@ export const KeyInput: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsVisible((prev) => !prev)}
-          className="flex items-center justify-center rounded-xl border border-(--border) bg-(--surface-soft) px-3 py-2 transition hover:bg-(--accent-coral-soft)"
+          className="flex items-center justify-center rounded-xl border border-sky-300 bg-sky-50 px-3 py-2 transition hover:bg-coral-50"
           aria-label={isVisible ? "Hide API token" : "Show API token"}
         >
           <span className="relative block w-5 h-5">
@@ -91,12 +91,13 @@ export const KeyInput: React.FC = () => {
       <button
         type="submit"
         disabled={!hasChanged}
-        className="cta-gradient rounded-xl px-4 py-2.5 w-full sm:w-auto text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50"
+        className="w-full rounded-xl bg-cta-gradient px-4 py-2.5 text-sm font-semibold text-white shadow-cta transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
       >
         Save token
       </button>
     </form>
   );
 };
+
 
 

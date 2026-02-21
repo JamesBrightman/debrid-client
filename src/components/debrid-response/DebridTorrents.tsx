@@ -81,12 +81,12 @@ export const DebridTorrents: React.FC = () => {
                 href={firstLink}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-md border border-[color:var(--border)] px-2 py-1 text-xs font-medium text-[color:var(--foreground)] hover:bg-[color:var(--surface-soft)]"
+                className="rounded-md border border-sky-300 px-2 py-1 text-xs font-medium text-slate-900 hover:bg-sky-50"
               >
                 Open
               </a>
             ) : (
-              <span className="text-xs text-[color:var(--muted)]">N/A</span>
+              <span className="text-xs text-slate-600">N/A</span>
             )
           );
         },
@@ -100,7 +100,7 @@ export const DebridTorrents: React.FC = () => {
             type="button"
             onClick={() => deleteMutation.mutate(row.original.id)}
             disabled={deletingId === row.original.id}
-            className="rounded-md border border-[#ffd5cc] px-2 py-1 text-xs font-medium text-[#a5402a] hover:bg-[color:var(--accent-coral-soft)] disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-md border border-coral-200 px-2 py-1 text-xs font-medium text-coral-800 hover:bg-coral-50 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {deletingId === row.original.id ? "Deleting..." : "Delete"}
           </button>
@@ -112,11 +112,11 @@ export const DebridTorrents: React.FC = () => {
 
   if (!hasKey) {
     return (
-      <section className="w-full rounded-xl border border-dashed border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+      <section className="w-full rounded-xl border border-dashed border-sky-300 bg-sky-50 p-4 shadow-card">
+        <h2 className="text-base font-semibold text-slate-900">
           Torrents
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">
+        <p className="mt-2 text-sm text-slate-600">
           Add a token to load torrents.
         </p>
       </section>
@@ -125,11 +125,11 @@ export const DebridTorrents: React.FC = () => {
 
   if (isLoading) {
     return (
-      <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-        <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+      <section className="w-full rounded-xl border border-sky-300 bg-sky-50 p-4 shadow-card">
+        <h2 className="text-base font-semibold text-slate-900">
           Torrents
         </h2>
-        <p className="mt-2 text-sm text-[color:var(--muted)]">
+        <p className="mt-2 text-sm text-slate-600">
           Loading torrents...
         </p>
       </section>
@@ -138,20 +138,20 @@ export const DebridTorrents: React.FC = () => {
 
   if (error) {
     return (
-      <section className="w-full rounded-xl border border-[#ffd5cc] bg-[color:var(--accent-coral-soft)] p-4">
-        <h2 className="text-base font-semibold text-[#a5402a]">Torrents</h2>
-        <p className="mt-2 text-sm text-[#a5402a]">{error.message}</p>
+      <section className="w-full rounded-xl border border-coral-200 bg-coral-50 p-4 shadow-card-coral">
+        <h2 className="text-base font-semibold text-coral-800">Torrents</h2>
+        <p className="mt-2 text-sm text-coral-800">{error.message}</p>
       </section>
     );
   }
 
   return (
-    <section className="w-full rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-soft)] p-4">
-      <h2 className="text-base font-semibold text-[color:var(--foreground)]">
+    <section className="w-full rounded-xl border border-sky-300 bg-sky-50 p-4 shadow-card">
+      <h2 className="text-base font-semibold text-slate-900">
         Torrents
       </h2>
       {deleteMutation.error ? (
-        <p className="mt-2 text-xs text-[#a5402a]">{deleteMutation.error.message}</p>
+        <p className="mt-2 text-xs text-coral-800">{deleteMutation.error.message}</p>
       ) : null}
       <DataTable
         data={torrents}
@@ -162,7 +162,7 @@ export const DebridTorrents: React.FC = () => {
       />
       {torrents.length > 0 ? (
         <>
-          <p className="mt-4 text-xs uppercase tracking-[0.14em] text-[color:var(--muted)]">
+          <p className="mt-4 text-xs uppercase tracking-[0.14em] text-slate-600">
             Total rows: {torrents.length}
           </p>
           <PaginationControls
@@ -177,3 +177,4 @@ export const DebridTorrents: React.FC = () => {
     </section>
   );
 };
+
